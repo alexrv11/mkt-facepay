@@ -1,24 +1,32 @@
 import React from 'react';
-import logo from './logo.svg';
+
+import { BrowserRouter, Route, Switch } from "react-router-dom";
+import { Helmet } from 'react-helmet';
+
+import LoginPage from './components/pages/login'
+import HomePage from './components/pages/home'
+import PayScreen from './components/pages/pay'
+
 import './App.css';
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Helmet>
+        <title>FacePay</title>
+        <meta name="description" content="You have a face? Pay with it!" />
+        <meta name="theme-color" content="#ffe600" />
+        <meta name="author" content="Kraken Team" />
+      </Helmet>
+      <BrowserRouter>
+        <div className="main">
+          <Switch>
+            <Route path="/" exact component={HomePage}/>
+            <Route path="/login" exact component={LoginPage}/>
+            <Route path="/pay" exact component={PayScreen}/>
+          </Switch>
+        </div>  
+      </BrowserRouter>
     </div>
   );
 }
