@@ -7,7 +7,7 @@ import LoginPage from './components/pages/login'
 import HomePage from './components/pages/home'
 import PayScreen from './components/pages/pay'
 
-import './App.css';
+import './App.scss';
 
 function App() {
   return (

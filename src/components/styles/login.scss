@@ -1,5 +1,8 @@
-@import './constants.sass';
+@import './constants.scss';
 
 .login-page {
-  background-color: $facepay-background-secondary
+
+  &__form {
+    background-color: $facepay-color-primary;
+  }
 }
