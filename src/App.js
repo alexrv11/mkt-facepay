@@ -15,7 +15,7 @@ function App() {
       <Helmet>
         <title>FacePay</title>
         <meta name="description" content="You have a face? Pay with it!" />
-        <meta name="theme-color" content="#ffe600" />
+        <meta name="theme-color" content="#E1E2E1" />
         <meta name="author" content="Kraken Team" />
       </Helmet>
       <BrowserRouter>
