@@ -1,8 +1,35 @@
+@import '../../index.scss';
 @import './constants.scss';
 
 .login-page {
+  width: 100%;
+  height: 100%;
+  background-color: $facepay-color-primary;
 
-  &__form {
-    background-color: $facepay-color-primary;
+  &__card {
+    padding: 128px;
+    display: flex;
+    flex-direction: column;
+    width: 240px;
+    height: 100%;
+  }
+
+  &__fields {
+    padding: 0 $andes-spacing-32;
+  }
+
+  &__button {
+    margin-top: $andes-spacing-32;
+
+    &--primary {
+      border-color: $facepay-color-dark;
+      background-color: $facepay-color-dark;
+    }
+
+    .andes-button {
+      &--transparent {
+        color: $facepay-color-dark;
+      }
+    }
   }
 }

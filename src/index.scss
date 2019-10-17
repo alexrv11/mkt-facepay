@@ -1,4 +1,8 @@
 @import './components/styles/constants.scss';
+@import '~@andes/button/index';
+@import '~@andes/card/index';
+@import '~@andes/textfield/index';
+@import '~@andes/form/index';
 
 body {
   background-color: $facepay-background-secondary;
@@ -8,6 +12,7 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  height: 100vw;
 }
 
 code {
