@@ -1,0 +1,8 @@
+@import './constants.scss';
+
+.login-page {
+
+  &__form {
+    background-color: $facepay-color-primary;
+  }
+}
