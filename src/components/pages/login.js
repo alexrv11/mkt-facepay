@@ -78,10 +78,11 @@ class LoginPage extends React.Component {
                     labelFixed
                     onChange={this.updateUserInput}/>
             <TextField 
-                    label="Clave" 
+                    label="Clave"
                     message="Ingrese su clave"
                     messageFixed
                     labelFixed
+                    type='password'
                     value={this.state.password}
                     onChange={this.updatePasswordInput}/>
           </div>
