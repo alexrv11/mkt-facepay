@@ -4,9 +4,9 @@ import { withRouter } from 'react-router-dom';
 import Card from '@andes/card';
 import Button from '@andes/button';
 import TextField from '@andes/textfield';
-import { validateUser } from '../services/login.service';
+import { validateUser, getUser } from '../services/login.service';
 import { USER_TYPE } from '../constants/index';
-import { saveToLocalStorage, getFromLocaleStorage, clearLocaleStorage } from '../services/storage.service';
+import { saveToLocalStorage, getFromLocalStorage, clearLocalStorage } from '../services/storage.service';
 import Logo from '../views/logo'
 import KrakenLogo from '../views/kraken-logo'
 import LogoMP from '../views/mercado-pago-logo'
@@ -15,12 +15,16 @@ import LogoMP from '../views/mercado-pago-logo'
 
 class LoginPage extends React.Component {
 
-  constructor(props){
+  constructor(props) {
     super(props);
     
     this.state = {
       user : '',
       password : '',
+    }
+
+    if (getUser()) {
+      window.location.href = '/';
     }
 
     this.updateUserInput = this.updateUserInput.bind(this);

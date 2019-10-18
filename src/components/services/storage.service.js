@@ -7,6 +7,6 @@ export const getFromLocalStorage = (itemName) => {
   localStorage.getItem(itemName);
 };
 
-export const clearLocalStorage = () => {
-  localStorage.clear();
+export const clearLocalStorage = (itemName) => {
+  localStorage.setItem(itemName, null);
 };
