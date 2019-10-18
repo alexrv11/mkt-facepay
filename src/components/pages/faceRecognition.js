@@ -100,7 +100,8 @@ export default class FaceRecognition extends React.Component {
         
         if (err.response && err.response.data && err.response.data.reason === 'Not enough account money') {
             this.setState({
-              payer: 'No posee dinero en cuenta'
+              payer: 'No posee dinero en cuenta',
+              isPaying: false
             });
             setTimeout(() => {
               this.setState({
