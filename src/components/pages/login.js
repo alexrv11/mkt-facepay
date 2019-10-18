@@ -51,7 +51,11 @@ class LoginPage extends React.Component {
         // const userType = response.data.user_type;
         // if (userType === USER_TYPE.SELLER){
           saveToLocalStorage('user', response.data)
-          this.props.history.push('/');
+          this.setState({outAnimation: true})
+          setTimeout(() => {
+            this.props.history.push('/');
+          }, 400);
+          
         // }
       })
       .catch((error) => {
@@ -62,7 +66,7 @@ class LoginPage extends React.Component {
 
   render() {
     return (
-      <div className='login-page'>     
+      <div className={`login-page ${this.state.outAnimation ? 'outAnimation' : ''}`}>     
         <Card className='login-page__card'>
           <div className="header">
               <Logo />
