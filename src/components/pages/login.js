@@ -17,9 +17,16 @@ class LoginPage extends React.Component {
       <div className='login-page'>     
         <Card className='login-page__card'>
           <h1>Face Pay</h1>
-          <div className='login-page_fields'>
-            <TextField label="E-mail" message="Ej. ivael@facepay.com" />
-            <TextField label="Clave"/>
+          <div className='login-page__fields'>
+            <TextField label="E-mail" 
+                    message="Ingrese su usuario"
+                    placeholder="Ej. juan@facepay.com"
+                    messageFixed
+                    labelFixed/>
+            <TextField label="Clave" 
+                    message="Ingrese su clave"
+                    messageFixed
+                    labelFixed/>
           </div>
           <div className="login-page__button">
             <Button className="login-page__button--primary" size="large" onClick={this.handleLogin}>Ingresar</Button>
