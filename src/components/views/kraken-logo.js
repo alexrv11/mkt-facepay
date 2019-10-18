@@ -3,9 +3,9 @@ import React from 'react';
 
 
 /** Component that represent home screen  */
-const KrakenLogo = () => {
+const KrakenLogo = (props) => {
     return (
-        <div class='kraken-logo'>     
+        <div className={`kraken-logo ${props.invert ? 'invert' : ''}`}>     
         </div>
     )
 }

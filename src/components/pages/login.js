@@ -3,11 +3,13 @@ import React from 'react';
 import { withRouter } from 'react-router-dom';
 import Card from '@andes/card';
 import Button from '@andes/button';
-import Snackbar from '@andes/snackbar';
 import TextField from '@andes/textfield';
 import { validateUser } from '../services/login.service';
 import { USER_TYPE } from '../constants/index';
 import { saveToLocalStorage, getFromLocaleStorage, clearLocaleStorage } from '../services/storage.service';
+import Logo from '../views/logo'
+import KrakenLogo from '../views/kraken-logo'
+import LogoMP from '../views/mercado-pago-logo'
 
 /** Component that represent home screen  */
 
@@ -58,7 +60,10 @@ class LoginPage extends React.Component {
     return (
       <div className='login-page'>     
         <Card className='login-page__card'>
-          <h1>Face Pay</h1>
+          <div className="header">
+              <Logo />
+              <div className="header-name">Face Pay</div>
+          </div>   
           <div className='login-page__fields'>
             <TextField 
                     label="E-mail" 
@@ -89,7 +94,26 @@ class LoginPage extends React.Component {
                   Crear cuenta
             </Button>
           </div>
+          <KrakenLogo invert/>
         </Card>
+
+        <div className="intro-container">
+          <div className="intro-column">
+            <img src= {require('../../assets/intro.gif')} alt="intro" />
+            <div className="quote">
+              “Los datos biométricos ofrecen gran protección contra el fraude financiero y distintos tipos de robos ya que son mucho más seguros que una tipica contraseña o PIN.”
+            </div>
+            <div className="referer">
+              Dr. Thirimachos Bourlai - Fundador & Director
+            </div>
+
+            <div className="mp-container">
+              <div className="powered-mp">Powered by</div>
+              <LogoMP />
+            </div>
+            
+          </div>  
+        </div>
       </div>
     )
   };
