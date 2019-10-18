@@ -1,4 +1,4 @@
 module.exports = {
-  url: 'http://localhost:8080',
+  url: 'https://thawing-wildwood-80127.herokuapp.com',
   path: ''
 }
