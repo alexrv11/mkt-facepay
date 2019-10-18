@@ -4,9 +4,10 @@ import { withRouter } from 'react-router-dom';
 import Card from '@andes/card';
 import Button from '@andes/button';
 import TextField from '@andes/textfield';
-import { validateUser, payer } from '../services/login.service';
+import { validateUser, getUser, registerPayer } from '../services/login.service';
+
 import { USER_TYPE } from '../constants/index';
-import { saveToLocalStorage, getFromLocaleStorage, clearLocaleStorage } from '../services/storage.service';
+import { saveToLocalStorage, getFromLocalStorage, clearLocalStorage } from '../services/storage.service';
 import Logo from '../views/logo'
 import KrakenLogo from '../views/kraken-logo'
 import LogoMP from '../views/mercado-pago-logo'
@@ -15,12 +16,16 @@ import LogoMP from '../views/mercado-pago-logo'
 
 class LoginPage extends React.Component {
 
-  constructor(props){
+  constructor(props) {
     super(props);
     
     this.state = {
       user : '',
       password : '',
+    }
+
+    if (getUser()) {
+      window.location.href = '/';
     }
 
     this.updateUserInput = this.updateUserInput.bind(this);
@@ -44,11 +49,11 @@ class LoginPage extends React.Component {
   handleLogin = () => {
     validateUser({user: this.state.user, password: this.state.password })
       .then((response) => {
-        const userType = response.data.user_type;
-        if (userType === USER_TYPE.SELLER){
-          saveToLocalStorage('user', response)
+        // const userType = response.data.user_type;
+        // if (userType === USER_TYPE.SELLER){
+          saveToLocalStorage('user', response.data)
           this.props.history.push('/');
-        }
+        // }
       })
       .catch((error) => {
         this.resetInputs();
@@ -57,7 +62,7 @@ class LoginPage extends React.Component {
   }
 
   handleRegisterPayer = () => {
-    payer()
+    registerPayer()
       .then((response) => {
         console.log(response.data);
         window.location.href = response.data;
@@ -86,10 +91,11 @@ class LoginPage extends React.Component {
                     labelFixed
                     onChange={this.updateUserInput}/>
             <TextField 
-                    label="Clave" 
+                    label="Clave"
                     message="Ingrese su clave"
                     messageFixed
                     labelFixed
+                    type='password'
                     value={this.state.password}
                     onChange={this.updatePasswordInput}/>
           </div>
