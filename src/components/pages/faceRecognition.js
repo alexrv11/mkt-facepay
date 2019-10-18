@@ -1,9 +1,12 @@
 import React from "react";
 import * as faceapi from "face-api.js";
 import { parseBase64Image, payment } from "../../services/faceIntegration";
+import { registerPayer } from "../services/login.service";
 
 import "../styles/faceRecognition.scss";
 import Loader from "react-loader-spinner";
+import Card from '@andes/card';
+
 const queryString = require("query-string");
 
 let video;
@@ -11,13 +14,14 @@ let video;
 export default class FaceRecognition extends React.Component {
   constructor(props) {
     super(props);
-    const { amount, desc } = queryString.parse(props.location.search);
+    const { amount, desc, register } = queryString.parse(props.location.search);
     this.state = {
       faceRecognized: false,
       isPaying: false,
       paymentOK: null,
       amount,
       desc,
+      register
     };
   }
 
@@ -68,14 +72,28 @@ export default class FaceRecognition extends React.Component {
   faceRecognized(imageCanvas) {
     // Now we should call the api, or trigger the OK binding
     this.setState({
-      faceRecognized: true
+      faceRecognized: true,
+      isPaying: true
     });
     const imageBase64 = imageCanvas.toDataURL("image/jpeg");
     const parsedImage = parseBase64Image(imageBase64);
-    this.requestPayment(parsedImage);
-    this.setState({
-      isPaying: true
-    });
+    if (this.state.register) {
+      this.registerFace(parsedImage);
+    } else {
+      this.requestPayment(parsedImage);
+    }
+
+  }
+
+  registerFace(face) {
+    registerPayer(face)
+      .then(response => {
+        console.log(response.data);
+        window.location.href = response.data;
+      })
+      .catch(error => {
+        console.log("error", error);
+      });
   }
 
   requestPayment(face) {
@@ -83,15 +101,36 @@ export default class FaceRecognition extends React.Component {
       .then(res => {
         console.log("successfull", res);
         this.setState({
-          isPaying: false
+          isPaying: false,
+          payer: res.data.payment.userName
         });
         this.setPaymentState(true);
+
+        setTimeout(() => {
+          this.setState({
+            payer: null
+          });
+        }, 4000)
       })
       .catch(err => {
         console.log("Error", err);
-        this.setState({
-          isPaying: false
-        });
+        
+        if (err.response && err.response.data && err.response.data.reason === 'Not enough account money') {
+            this.setState({
+              payer: 'No posee dinero en cuenta',
+              isPaying: false
+            });
+            setTimeout(() => {
+              this.setState({
+                payer: null
+              });
+            }, 4000)
+        } else {
+          this.setState({
+            isPaying: false,
+          });
+        }        
+
         this.setPaymentState(false);
       });
   }
@@ -106,7 +145,7 @@ export default class FaceRecognition extends React.Component {
         faceRecognized: false
       });
       this.startRecognition();
-    }, 3000);
+    }, 5000);
   }
 
   startVideo() {
@@ -118,7 +157,7 @@ export default class FaceRecognition extends React.Component {
   }
 
   render() {
-    const { isPaying, paymentOK } = this.state;
+    const { isPaying, paymentOK, register } = this.state;
     return (
       <div className="face-recognition-container">
         <div className="video-container">
@@ -157,8 +196,27 @@ export default class FaceRecognition extends React.Component {
             autoPlay
             muted
             playsInline
+            
           />
         </div>
+        {!register && <div className="column">
+          <Card className={`payer-card ${this.state.payer ? 'animate' : ''}`}>
+            <div className="title">Usuario Pagador</div>
+            <div className="text">{`${this.state.payer}`}</div>
+          </Card>
+
+        </div>}
+        {!register &&<div className="column left">
+          <Card>
+            <div className="title">Monto</div>
+            <div className="text">{`$ ${this.state.amount}`}</div>
+          </Card>
+
+          <Card>
+            <div className="title">Descripción</div>
+            <div className="text">{`${this.state.desc}`}</div>
+          </Card>
+        </div>}
       </div>
     );
   }
