@@ -6,6 +6,7 @@ import { Helmet } from 'react-helmet';
 import LoginPage from './components/pages/login'
 import HomePage from './components/pages/home'
 import PayScreen from './components/pages/pay'
+import ErrorScreen from './components/pages/error'
 
 import './App.scss';
 
@@ -24,6 +25,7 @@ function App() {
             <Route path="/" exact component={HomePage}/>
             <Route path="/login" exact component={LoginPage}/>
             <Route path="/pay" exact component={PayScreen}/>
+            <Route path="/error" exact component={ErrorScreen}/>
           </Switch>
         </div>  
       </BrowserRouter>
