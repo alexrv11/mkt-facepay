@@ -1,0 +1,4 @@
+// Breakpoints
+$breakpoint-desktop: 768px !default;
+
+$z-index: 1020; // greater than 1014 (navigation's search bar's z-index)
