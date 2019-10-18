@@ -33,7 +33,7 @@ class HomePage extends React.Component {
     scanHandle = () => {
         if (this.state.description.length > 0 && this.state.amount.length > 0) {
             // go to scan
-            window.location.href = `/face/?amount=${this.state.amount}&desc=${this.state.description}`
+            window.location.href = `/face?amount=${this.state.amount}&desc=${this.state.description}`
         } else {
             this.updateErrors();
         }
