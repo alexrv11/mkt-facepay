@@ -3,6 +3,8 @@ import * as faceapi from "face-api.js";
 import { parseBase64Image, payment } from "../../services/faceIntegration";
 import "../styles/faceRecognition.scss";
 import Loader from "react-loader-spinner";
+import Card from '@andes/card';
+
 const queryString = require("query-string");
 
 let video;
@@ -67,14 +69,13 @@ export default class FaceRecognition extends React.Component {
   faceRecognized(imageCanvas) {
     // Now we should call the api, or trigger the OK binding
     this.setState({
-      faceRecognized: true
+      faceRecognized: true,
+      isPaying: true
     });
     const imageBase64 = imageCanvas.toDataURL("image/jpeg");
     const parsedImage = parseBase64Image(imageBase64);
     this.requestPayment(parsedImage);
-    this.setState({
-      isPaying: true
-    });
+
   }
 
   requestPayment(face) {
@@ -82,15 +83,23 @@ export default class FaceRecognition extends React.Component {
       .then(res => {
         console.log("successfull", res);
         this.setState({
-          isPaying: false
+          isPaying: false,
+          payer: res.data.payment.userName
         });
         this.setPaymentState(true);
+
+        setTimeout(() => {
+          this.setState({
+            payer: null
+          });
+        }, 4000)
       })
       .catch(err => {
         console.log("Error", err);
         this.setState({
-          isPaying: false
+          isPaying: false,
         });
+
         this.setPaymentState(false);
       });
   }
@@ -156,7 +165,26 @@ export default class FaceRecognition extends React.Component {
             autoPlay
             muted
             playsInline
+            
           />
+        </div>
+        <div className="column">
+          <Card className={`payer-card ${this.state.payer ? 'animate' : ''}`}>
+            <div className="title">Usuario Pagador</div>
+            <div className="text">{`${this.state.payer}`}</div>
+          </Card>
+
+        </div>
+        <div className="column left">
+          <Card>
+            <div className="title">Monto</div>
+            <div className="text">{`$ ${this.state.amount}`}</div>
+          </Card>
+
+          <Card>
+            <div className="title">Descripción</div>
+            <div className="text">{`${this.state.desc}`}</div>
+          </Card>
         </div>
       </div>
     );
