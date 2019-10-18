@@ -126,4 +126,14 @@
       } 
     }
   }
+
+  &.outAnimation {
+    animation-name: outro-key;
+    animation-duration: 0.4s;
+  }
+
+  @keyframes outro-key {
+    from {padding-left: 0}
+    to {padding-left: 1000px}
+  }
 }

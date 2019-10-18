@@ -21,4 +21,5 @@
 .video-element {
   border-radius: 50%;
   object-fit: cover;
+  transform: scaleX(-1);
 }

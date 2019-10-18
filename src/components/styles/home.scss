@@ -3,6 +3,8 @@
 
 .page-container {
   background-color: transparent;
+  animation-name: intro-fade-key;
+  animation-duration: 0.4s;
 
 
   .gray-gradient {
@@ -72,16 +74,29 @@
         }
 
         &.field-names {
-          text-align: end;   
-          margin-right: 5px;
-          letter-spacing: 1px;
-          color: #000000cc
-        }
+            text-align: end;   
+            margin-right: 5px;
+            letter-spacing: 1px;
+            color: #000000cc
+          }
 
         &.values {
           text-align: left;
           margin-left: 5px;
           font-weight: 500;
+
+          .row {
+          display: flex;
+
+          .settings {
+            background-image: url('../../assets/settings-icon.png');
+            background-size: cover;
+            width: 20px;
+            height: 20px;
+            margin-left: 10px;
+            opacity: 0.8;
+          }
+        }
         }
       }
     }
@@ -130,4 +145,9 @@
       color: black;
     }
   }
+}
+
+@keyframes intro-fade-key {
+  from {opacity: 0}
+  to {opacity: 1}
 }

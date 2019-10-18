@@ -71,19 +71,7 @@ class HomePage extends React.Component {
     render() {
 
         const user = getUser();
-
-        const {
-            username,
-            deviceName,
-            mercadoPago
-        } = this.props.collector || {/* temp */
-            username: 'Linea 184 - Ersa Urbano',
-            deviceName: 'Unidad 48',
-            mercadoPago: {
-                nickname: 'LINEA-COLECTIVO-184'
-            }
-        };
-
+        
         return (
             <div className="page-container">
                 <div className="gray-gradient" />
@@ -101,13 +89,13 @@ class HomePage extends React.Component {
                     <Card className="user-data">
                         <div className="col field-names">
                             <div className="row">Nombre de usuario:</div>
-                            <div className="row">Mercado Pago Nickname:</div>
+                            <div className="row">Tipo de usuario regristrado:</div>
                             <div className="row">Nombre de dispositivo:</div>
                         </div>
                         <div className="col values">
-                            <div className="row">{username}</div>
-                            <div className="row">{mercadoPago.nickname}</div>
-                            <div className="row">{deviceName}</div>
+                            <div className="row">{user.user_name}</div>
+                            <div className="row">{user.user_type}</div>
+                            <div className="row">{`${user.user_name}_001`} <div className="settings"/></div>
                         </div>
                     </Card> 
                     <div className="title">
