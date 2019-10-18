@@ -89,15 +89,7 @@ class LoginPage extends React.Component {
   }
 
   handleRegisterPayer = () => {
-    registerPayer()
-      .then((response) => {
-        console.log(response.data);
-        window.location.href = response.data;
-        
-      })
-      .catch((error) => {
-        console.log('error', error);  
-      });
+    this.props.history.push('/face?register=true');
   }
 
   render() {
