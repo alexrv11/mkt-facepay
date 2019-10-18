@@ -1,6 +1,5 @@
 import React from "react";
 import * as faceapi from "face-api.js";
-import { parseBase64Image, authFace, payment } from "../../services/faceIntegration";
 import { parseBase64Image, payment } from "../../services/faceIntegration";
 
 import "../styles/faceRecognition.scss";
@@ -12,7 +11,6 @@ let video;
 export default class FaceRecognition extends React.Component {
   constructor(props) {
     super(props);
-
     const { amount, desc } = queryString.parse(props.location.search);
     this.state = {
       faceRecognized: false,
@@ -81,7 +79,6 @@ export default class FaceRecognition extends React.Component {
   }
 
   requestPayment(face) {
-
     payment(face, this.state.amount, this.state.desc)
       .then(res => {
         console.log("successfull", res);

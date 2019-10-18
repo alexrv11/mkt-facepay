@@ -4,9 +4,7 @@ import { withRouter } from 'react-router-dom';
 import Card from '@andes/card';
 import Button from '@andes/button';
 import TextField from '@andes/textfield';
-
 import { validateUser, getUser, registerPayer } from '../services/login.service';
-
 import { USER_TYPE } from '../constants/index';
 import { saveToLocalStorage, getFromLocalStorage, clearLocalStorage } from '../services/storage.service';
 import Logo from '../views/logo'
@@ -53,7 +51,6 @@ class LoginPage extends React.Component {
         // const userType = response.data.user_type;
         // if (userType === USER_TYPE.SELLER){
           saveToLocalStorage('user', response.data)
-
           this.setState({outAnimation: true})
           setTimeout(() => {
             this.props.history.push('/');

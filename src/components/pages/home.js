@@ -69,7 +69,6 @@ class HomePage extends React.Component {
     }
 
     render() {
-
         const user = getUser();
         
         return (
