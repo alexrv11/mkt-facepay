@@ -5,11 +5,12 @@ import Card from '@andes/card';
 import Button from '@andes/button';
 import TextField from '@andes/textfield';
 import { validateUser, getUser, registerPayer } from '../services/login.service';
-import { USER_TYPE } from '../constants/index';
-import { saveToLocalStorage, getFromLocalStorage, clearLocalStorage } from '../services/storage.service';
+import { saveToLocalStorage } from '../services/storage.service';
 import Logo from '../views/logo'
 import KrakenLogo from '../views/kraken-logo'
 import LogoMP from '../views/mercado-pago-logo'
+const Snackbar = require('@andes/snackbar');
+const queryString = require("query-string");
 
 /** Component that represent home screen  */
 
@@ -17,20 +18,43 @@ class LoginPage extends React.Component {
 
   constructor(props) {
     super(props);
+
     
     this.state = {
       user : '',
       password : '',
+      snackbarMessage: '',
+      snackbarType: '',
+      showSnackbar: false,
     }
 
     if (getUser()) {
       window.location.href = '/';
     }
-
+    
     this.updateUserInput = this.updateUserInput.bind(this);
     this.updatePasswordInput = this.updatePasswordInput.bind(this);
     this.handleLogin = this.handleLogin.bind(this);
     this.resetInputs = this.resetInputs.bind(this);
+  }
+
+  componentDidMount() {
+    const { status } = queryString.parse(this.props.location.search);
+
+    if(status === 'registered') {
+      this.showToast('Se ha registrado correctamente', 'success');
+    }
+    if(status === 'error') {
+      this.showToast('Hubo un problema con el registro', 'error');
+    }
+  }
+
+  showToast(message, type) {
+    this.setState({
+      snackbarMessage: message,
+      snackbarType: type,
+      showSnackbar: true,
+    });
   }
 
   updateUserInput(event){
@@ -77,8 +101,16 @@ class LoginPage extends React.Component {
   }
 
   render() {
+    const {snackbarMessage, snackbarType, showSnackbar} = this.state;
     return (
-      <div className={`login-page ${this.state.outAnimation ? 'outAnimation' : ''}`}>     
+      <div className={`login-page ${this.state.outAnimation ? 'outAnimation' : ''}`}>   
+      {showSnackbar && <Snackbar
+          message={snackbarMessage}
+          type={snackbarType}
+          show
+          delay={3000}
+        />
+        }  
         <Card className='login-page__card'>
           <div className="header">
               <Logo />
