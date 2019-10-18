@@ -3,17 +3,20 @@ import * as faceapi from "face-api.js";
 import { parseBase64Image, authFace } from "../../services/faceIntegration";
 import "../styles/faceRecognition.scss";
 import Loader from "react-loader-spinner";
+const queryString = require("query-string");
 
 let video;
 
 export default class FaceRecognition extends React.Component {
   constructor(props) {
     super(props);
-
+    const { price, desc } = queryString.parse(props.location.search);
     this.state = {
       faceRecognized: false,
       isPaying: false,
-      paymentOK: null
+      paymentOK: null,
+      price,
+      desc,
     };
   }
 
@@ -36,7 +39,7 @@ export default class FaceRecognition extends React.Component {
       if (detections) {
         // Face detected with high score
         const score = detections.detection.score;
-        if (score >= 0.80 && !this.state.faceRecognized) {
+        if (score >= 0.8 && !this.state.faceRecognized) {
           console.log(detections.detection.score);
           clearInterval(detectFaceInterval);
           const imageCanvas = faceapi.createCanvasFromMedia(
@@ -99,7 +102,7 @@ export default class FaceRecognition extends React.Component {
     setTimeout(() => {
       this.setState({
         paymentOK: null,
-        faceRecognized: false,
+        faceRecognized: false
       });
       this.startRecognition();
     }, 3000);
@@ -128,10 +131,22 @@ export default class FaceRecognition extends React.Component {
             />
           )}
           {paymentOK === true && (
-            <Loader className="loader" type="Puff" color="#008744" height={480} width={480} />
+            <Loader
+              className="loader"
+              type="Puff"
+              color="#008744"
+              height={480}
+              width={480}
+            />
           )}
           {paymentOK === false && (
-            <Loader className="loader" type="Puff" color="#D12440" height={480} width={480} />
+            <Loader
+              className="loader"
+              type="Puff"
+              color="#D12440"
+              height={480}
+              width={480}
+            />
           )}
           <video
             className="video-element"
