@@ -1,0 +1,22 @@
+.main, .App, .root, .face-recognition-container {
+  height: 100vh;
+}
+
+.face-recognition-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: rebeccapurple;
+}
+
+.video-container {
+  position: relative;
+  .loader {
+    position: absolute;
+  }
+}
+
+.video-element {
+  border-radius: 50%;
+  object-fit: cover;
+}

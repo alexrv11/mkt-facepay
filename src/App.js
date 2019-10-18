@@ -6,6 +6,8 @@ import { Helmet } from 'react-helmet';
 import LoginPage from './components/pages/login'
 import HomePage from './components/pages/home'
 import PayScreen from './components/pages/pay'
+import FaceRecognition from './components/pages/faceRecognition';
+import "react-loader-spinner/dist/loader/css/react-spinner-loader.css";
 
 import './App.scss';
 
@@ -24,6 +26,7 @@ function App() {
             <Route path="/" exact component={HomePage}/>
             <Route path="/login" exact component={LoginPage}/>
             <Route path="/pay" exact component={PayScreen}/>
+            <Route path="/face" exact component={FaceRecognition}/>
           </Switch>
         </div>  
       </BrowserRouter>
