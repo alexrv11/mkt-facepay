@@ -40,7 +40,7 @@
     border-color: $facepay-color-light;
     background-color: $facepay-color-light;
 
-    &:hover {
+    &:hover, &:focus {
       border-color: $facepay-color-dark;
       background-color: $facepay-color-dark;
     }
