@@ -3,12 +3,25 @@
 
 .page-container {
   background-color: transparent;
+  animation-name: intro-fade-key;
+  animation-duration: 0.4s;
+
+
+  .gray-gradient {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background-image: linear-gradient(to right, $facepay-background-primary, $facepay-background-secondary);
+    z-index: -2;
+  }
 
   .background-flip {
     position: fixed;
     width: calc(50vw - 200px);
     height: 100vh;
-    background-color: $facepay-color-light;
+    //background-color: $facepay-color-light;
+    box-shadow: inset 0 0 10px #000000;
+    background-image: linear-gradient($facepay-color-dark, $facepay-color-primary, $facepay-color-dark);
     z-index: -1;
   }
 
@@ -61,16 +74,29 @@
         }
 
         &.field-names {
-          text-align: end;   
-          margin-right: 5px;
-          letter-spacing: 1px;
-          color: #000000cc
-        }
+            text-align: end;   
+            margin-right: 5px;
+            letter-spacing: 1px;
+            color: #000000cc
+          }
 
         &.values {
           text-align: left;
           margin-left: 5px;
           font-weight: 500;
+
+          .row {
+          display: flex;
+
+          .settings {
+            background-image: url('../../assets/settings-icon.png');
+            background-size: cover;
+            width: 20px;
+            height: 20px;
+            margin-left: 10px;
+            opacity: 0.8;
+          }
+        }
         }
       }
     }
@@ -90,6 +116,11 @@
       margin: auto 0 auto auto;
       border-color: $facepay-color-light;
       background-color: $facepay-color-light;
+
+      &:hover {
+        border-color: $facepay-color-dark;
+        background-color: $facepay-color-dark;
+      }
     }
   }
 
@@ -98,4 +129,25 @@
     left: 40px;
     bottom: 0px;
   }
+
+  .logout-button {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    border-color: transparent;
+    color: $facepay-color-dark;
+    background-color: transparent;
+    font-size: 14px;
+
+    &:hover {
+      border-color: transparent;
+      background-color: transparent;
+      color: black;
+    }
+  }
+}
+
+@keyframes intro-fade-key {
+  from {opacity: 0}
+  to {opacity: 1}
 }
