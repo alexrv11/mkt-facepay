@@ -97,9 +97,21 @@ export default class FaceRecognition extends React.Component {
       })
       .catch(err => {
         console.log("Error", err);
-        this.setState({
-          isPaying: false,
-        });
+        
+        if (err.response && err.response.data && err.response.data.reason === 'Not enough account money') {
+            this.setState({
+              payer: 'No posee dinero en cuenta'
+            });
+            setTimeout(() => {
+              this.setState({
+                payer: null
+              });
+            }, 4000)
+        } else {
+          this.setState({
+            isPaying: false,
+          });
+        }        
 
         this.setPaymentState(false);
       });
@@ -115,7 +127,7 @@ export default class FaceRecognition extends React.Component {
         faceRecognized: false
       });
       this.startRecognition();
-    }, 3000);
+    }, 5000);
   }
 
   startVideo() {
