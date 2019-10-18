@@ -29,6 +29,7 @@ function App() {
             <Route path="/pay" exact component={PayScreen}/>
             <Route path="/face" exact component={FaceRecognition}/>
             <Route path="/error" exact component={ErrorScreen}/>
+            <Route path="/" component={HomePage}/>
           </Switch>
         </div>  
       </BrowserRouter>
