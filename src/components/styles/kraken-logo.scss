@@ -1,0 +1,15 @@
+@import './constants.scss';
+
+.kraken-logo {
+  background-image: url('../../assets/wick-kraken-logo.png');
+  background-size: cover;
+  margin-bottom: 50px;
+  margin-top: auto;
+  width: 68px;
+  height: 100px;
+
+  &.invert {
+    background-image: url('../../assets/wick-kraken-logo-invert.png');
+  }
+}
+

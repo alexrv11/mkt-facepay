@@ -8,6 +8,7 @@ import HomePage from './components/pages/home'
 import PayScreen from './components/pages/pay'
 import FaceRecognition from './components/pages/faceRecognition';
 import "react-loader-spinner/dist/loader/css/react-spinner-loader.css";
+import ErrorScreen from './components/pages/error'
 
 import './App.scss';
 
@@ -17,7 +18,7 @@ function App() {
       <Helmet>
         <title>FacePay</title>
         <meta name="description" content="You have a face? Pay with it!" />
-        <meta name="theme-color" content="#ffe600" />
+        <meta name="theme-color" content="#E1E2E1" />
         <meta name="author" content="Kraken Team" />
       </Helmet>
       <BrowserRouter>
@@ -27,6 +28,7 @@ function App() {
             <Route path="/login" exact component={LoginPage}/>
             <Route path="/pay" exact component={PayScreen}/>
             <Route path="/face" exact component={FaceRecognition}/>
+            <Route path="/error" exact component={ErrorScreen}/>
           </Switch>
         </div>  
       </BrowserRouter>

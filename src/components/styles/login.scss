@@ -1,8 +1,130 @@
+@import '../../index.scss';
 @import './constants.scss';
 
 .login-page {
+  width: 100%;
+  display: flex;
+  background-color: $facepay-color-primary;
 
-  &__form {
-    background-color: $facepay-color-primary;
+  &__card {
+    padding: 128px;
+    display: flex;
+    flex-direction: column;
+    width: 320px;
+    height: 91vh;
+  }
+
+  .header {
+    display: inline-flex;
+    padding-top: 30px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 40px;
+
+    .header-name {
+      font-family: $font-family-primary;
+      color: $facepay-color-light;
+      font-size: 50px;
+      margin-left: 10px;
+      padding-top: 20px;
+    }
+  }
+
+  &__fields {
+    .andes-form-control {
+      margin-bottom: 20px;
+    }
+  }
+
+  .andes-button--filled {
+    border-color: $facepay-color-light;
+    background-color: $facepay-color-light;
+
+    &:hover {
+      border-color: $facepay-color-dark;
+      background-color: $facepay-color-dark;
+    }
+  }
+
+  &__button {
+    margin-top: $andes-spacing-32;
+    display: flex;
+    flex-direction: column;
+
+    &--primary {
+      border-color: $facepay-color-dark;
+      background-color: $facepay-color-dark;
+    }
+
+    .andes-button {
+      &--transparent {
+        color: $facepay-color-dark;
+      }
+    }
+  }
+
+  .kraken-logo {
+    opacity: 0.5;
+    margin-left: auto;
+    margin-right: auto; 
+    margin-bottom: 0;
+  }
+
+  .intro-container {
+    flex: 1;
+    box-shadow: inset 0 0 10px #000000;
+    background-image: linear-gradient($facepay-color-dark, $facepay-color-primary, $facepay-color-dark);
+
+    .intro-column {
+      margin-left: auto;
+        margin-right: auto;
+        width: 600px;
+        height: 100%;
+
+      img {
+        margin-top: 100px;
+        margin-bottom: 20px;
+        opacity: 0.5;
+        box-shadow: 0 0 5px 5px rgba(0, 0, 0, 0.07), 0 1px 2px 0 rgba(0, 0, 0, 0.25);
+      }
+
+      .quote {
+        font-family: $font-family-primary;
+        color: $facepay-background-primary;
+        font-size: 14px;
+        font-weight: 500;
+        margin-left: 80px;
+        margin-right: 80px;
+      }
+
+      .referer {
+        font-family: $font-family-primary;
+        color: $facepay-background-secondary;
+        font-size: 12px;
+        font-weight: 300;
+        text-align: end;
+        margin-top: 5px;
+        margin-left: 80px;
+        margin-right: 80px;
+      }
+
+      .mp-container {
+        margin-top: 100px;
+        position: relative;
+        width: 100%;
+        height: 100%;
+
+        .powered-mp {
+          margin-top: auto;
+          text-align: center;
+          margin-left: 60px;
+        }
+
+        .logo-mp {
+          margin-left: auto;
+          margin-right: auto;
+        }
+      } 
+    }
   }
 }

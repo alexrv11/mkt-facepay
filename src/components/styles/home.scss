@@ -1,0 +1,117 @@
+@import './constants.scss';
+@import '~@andes/card/index';
+
+.page-container {
+  background-color: transparent;
+
+
+  .gray-gradient {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background-image: linear-gradient(to right, $facepay-background-primary, $facepay-background-secondary);
+    z-index: -2;
+  }
+
+  .background-flip {
+    position: fixed;
+    width: calc(50vw - 200px);
+    height: 100vh;
+    //background-color: $facepay-color-light;
+    box-shadow: inset 0 0 10px #000000;
+    background-image: linear-gradient($facepay-color-dark, $facepay-color-primary, $facepay-color-dark);
+    z-index: -1;
+  }
+
+  .header {
+    display: inline-flex;
+    padding-top: 30px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 10px;
+
+    .header-name {
+      font-family: $font-family-primary;
+      color: $facepay-color-light;
+      font-size: 60px;
+      margin-left: 10px;
+      padding-top: 10px;
+    }
+  }
+
+  .content {
+    background-color: transparent;
+    max-width: 540px;
+    margin-left: auto;
+    margin-right: auto;
+
+    .title {
+      text-align: right;
+      font-family: $font-family-primary;
+      font-size: 24px;
+      font-weight: 500;
+
+      b {
+        color: $facepay-color-light;
+      }
+    }
+
+    .andes-card {
+      margin: 16px 0px 30px 0px;
+      box-shadow: 0 0 5px 5px rgba(0, 0, 0, 0.07), 0 1px 2px 0 rgba(0, 0, 0, 0.25);
+    }
+
+    .user-data {
+      display: flex;
+
+      .col {
+        flex: 1;
+
+        .row {
+          margin-bottom: 3px;
+        }
+
+        &.field-names {
+          text-align: end;   
+          margin-right: 5px;
+          letter-spacing: 1px;
+          color: #000000cc
+        }
+
+        &.values {
+          text-align: left;
+          margin-left: 5px;
+          font-weight: 500;
+        }
+      }
+    }
+  }
+
+  .pay-config {
+
+    .andes-form-control.description {
+        margin-bottom: 20px;
+      }
+
+    .row {
+      display: flex;
+    }
+
+    .andes-button--filled {
+      margin: auto 0 auto auto;
+      border-color: $facepay-color-light;
+      background-color: $facepay-color-light;
+
+      &:hover {
+        border-color: $facepay-color-dark;
+        background-color: $facepay-color-dark;
+      }
+    }
+  }
+
+  .kraken-logo {
+    position: absolute;
+    left: 40px;
+    bottom: 0px;
+  }
+}
