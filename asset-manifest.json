@@ -1,0 +1,27 @@
+{
+  "files": {
+    "main.css": "/mkt-facepay/static/css/main.f8f74f8c.chunk.css",
+    "main.js": "/mkt-facepay/static/js/main.2fac2f74.chunk.js",
+    "main.js.map": "/mkt-facepay/static/js/main.2fac2f74.chunk.js.map",
+    "runtime-main.js": "/mkt-facepay/static/js/runtime-main.9846e2fc.js",
+    "runtime-main.js.map": "/mkt-facepay/static/js/runtime-main.9846e2fc.js.map",
+    "static/css/2.aba131b8.chunk.css": "/mkt-facepay/static/css/2.aba131b8.chunk.css",
+    "static/js/2.6f24e01d.chunk.js": "/mkt-facepay/static/js/2.6f24e01d.chunk.js",
+    "static/js/2.6f24e01d.chunk.js.map": "/mkt-facepay/static/js/2.6f24e01d.chunk.js.map",
+    "index.html": "/mkt-facepay/index.html",
+    "precache-manifest.4246e7ec0fc5366c01811750d87da580.js": "/mkt-facepay/precache-manifest.4246e7ec0fc5366c01811750d87da580.js",
+    "service-worker.js": "/mkt-facepay/service-worker.js",
+    "static/css/2.aba131b8.chunk.css.map": "/mkt-facepay/static/css/2.aba131b8.chunk.css.map",
+    "static/css/main.f8f74f8c.chunk.css.map": "/mkt-facepay/static/css/main.f8f74f8c.chunk.css.map",
+    "static/media/intro.gif": "/mkt-facepay/static/media/intro.73ff319e.gif",
+    "static/media/logo.scss": "/mkt-facepay/static/media/logo.4dd19aad.png",
+    "static/media/kraken-logo.scss": "/mkt-facepay/static/media/wick-kraken-logo.91ac24f4.png"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.9846e2fc.js",
+    "static/css/2.aba131b8.chunk.css",
+    "static/js/2.6f24e01d.chunk.js",
+    "static/css/main.f8f74f8c.chunk.css",
+    "static/js/main.2fac2f74.chunk.js"
+  ]
+}
