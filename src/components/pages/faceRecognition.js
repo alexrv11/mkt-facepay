@@ -36,7 +36,7 @@ export default class FaceRecognition extends React.Component {
       if (detections) {
         // Face detected with high score
         const score = detections.detection.score;
-        if (score >= 0.85 && !this.state.faceRecognized) {
+        if (score >= 0.80 && !this.state.faceRecognized) {
           console.log(detections.detection.score);
           clearInterval(detectFaceInterval);
           const imageCanvas = faceapi.createCanvasFromMedia(
@@ -46,7 +46,6 @@ export default class FaceRecognition extends React.Component {
               height: 272
             }
           );
-          debugger
           this.faceRecognized(imageCanvas);
         }
       }
@@ -103,7 +102,7 @@ export default class FaceRecognition extends React.Component {
         faceRecognized: false,
       });
       this.startRecognition();
-    }, 2000);
+    }, 3000);
   }
 
   startVideo() {
