@@ -9,9 +9,10 @@ export const validateUser = ({ user, password }) => {
 };
 
 export const getUser = () => {
-  return getFromLocalStorage('user');
-}
+  const user = getFromLocalStorage('user')
+  return user && user !== 'null' ? user : undefined;
+};
 
 export const logout = () => {
   clearLocalStorage('user')
-}
+};

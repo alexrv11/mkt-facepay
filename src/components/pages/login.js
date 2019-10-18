@@ -48,11 +48,11 @@ class LoginPage extends React.Component {
   handleLogin = () => {
     validateUser({user: this.state.user, password: this.state.password })
       .then((response) => {
-        const userType = response.data.user_type;
-        if (userType === USER_TYPE.SELLER){
-          saveToLocalStorage('user', response)
+        // const userType = response.data.user_type;
+        // if (userType === USER_TYPE.SELLER){
+          saveToLocalStorage('user', response.data)
           this.props.history.push('/');
-        }
+        // }
       })
       .catch((error) => {
         this.resetInputs();

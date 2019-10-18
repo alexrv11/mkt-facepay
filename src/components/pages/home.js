@@ -6,7 +6,7 @@ import Logo from '../views/logo'
 import KrakenLogo from '../views/kraken-logo'
 import TextField from '@andes/textfield';
 import Button from '@andes/button'
-import { getUser } from '../services/login.service';
+import { getUser, logout } from '../services/login.service';
 
 /** Component that represent home screen  */
 class HomePage extends React.Component {  
@@ -20,13 +20,14 @@ class HomePage extends React.Component {
             errors: {}
         }
 
-    if (!getUser()) {
-      window.location.href = '/login';
-    }
+        if (!getUser()) {
+            window.location.href = '/login';
+        }
 
-    this.inputChanged = this.inputChanged.bind(this);
-    this.amountChanged = this.amountChanged.bind(this);
-  }
+        this.inputChanged = this.inputChanged.bind(this);
+        this.amountChanged = this.amountChanged.bind(this);
+        this.logoutHandle = this.logoutHandle.bind(this);
+    }
 
     
 
@@ -37,6 +38,11 @@ class HomePage extends React.Component {
         } else {
             this.updateErrors();
         }
+    }
+
+    logoutHandle = () => {
+        logout();
+        window.location.href = '/login';
     }
 
     inputChanged = (event) => {
@@ -138,7 +144,9 @@ class HomePage extends React.Component {
                         
                     </Card> 
                 </div>
-                
+                    <Button className='logout-button' modifier='outline' onClick={this.logoutHandle}>
+                        Cerrar sesión
+                    </Button>
             </div>
         )
     }

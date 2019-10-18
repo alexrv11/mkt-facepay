@@ -114,4 +114,20 @@
     left: 40px;
     bottom: 0px;
   }
+
+  .logout-button {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    border-color: transparent;
+    color: $facepay-color-dark;
+    background-color: transparent;
+    font-size: 14px;
+
+    &:hover {
+      border-color: transparent;
+      background-color: transparent;
+      color: black;
+    }
+  }
 }

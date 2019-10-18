@@ -4,7 +4,7 @@ export const saveToLocalStorage = (itemName, itemValue) => {
 };
 
 export const getFromLocalStorage = (itemName) => {
-  localStorage.getItem(itemName);
+  return localStorage.getItem(itemName);
 };
 
 export const clearLocalStorage = (itemName) => {
