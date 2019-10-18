@@ -4,11 +4,22 @@
 .page-container {
   background-color: transparent;
 
+
+  .gray-gradient {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background-image: linear-gradient(to right, $facepay-background-primary, $facepay-background-secondary);
+    z-index: -2;
+  }
+
   .background-flip {
     position: fixed;
     width: calc(50vw - 200px);
     height: 100vh;
-    background-color: $facepay-color-light;
+    //background-color: $facepay-color-light;
+    box-shadow: inset 0 0 10px #000000;
+    background-image: linear-gradient($facepay-color-dark, $facepay-color-primary, $facepay-color-dark);
     z-index: -1;
   }
 
@@ -90,6 +101,11 @@
       margin: auto 0 auto auto;
       border-color: $facepay-color-light;
       background-color: $facepay-color-light;
+
+      &:hover {
+        border-color: $facepay-color-dark;
+        background-color: $facepay-color-dark;
+      }
     }
   }
 

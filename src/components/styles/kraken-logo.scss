@@ -7,4 +7,9 @@
   margin-top: auto;
   width: 68px;
   height: 100px;
+
+  &.invert {
+    background-image: url('../../assets/wick-kraken-logo-invert.png');
+  }
 }
+

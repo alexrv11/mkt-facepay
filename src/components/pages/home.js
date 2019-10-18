@@ -26,6 +26,7 @@ const HomePage = (props = {}) => {
     } = props.collector;
     return (
         <div className="page-container">
+            <div className="gray-gradient" />
             <div className="background-flip">
                 <KrakenLogo />
             </div>

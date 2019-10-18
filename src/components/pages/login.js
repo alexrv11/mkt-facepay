@@ -3,6 +3,9 @@ import React from 'react';
 import Card from '@andes/card';
 import Button from '@andes/button';
 import TextField from '@andes/textfield';
+import Logo from '../views/logo'
+import KrakenLogo from '../views/kraken-logo'
+import LogoMP from '../views/mercado-pago-logo'
 
 /** Component that represent home screen  */
 
@@ -16,7 +19,10 @@ class LoginPage extends React.Component {
     return (
       <div className='login-page'>     
         <Card className='login-page__card'>
-          <h1>Face Pay</h1>
+          <div className="header">
+              <Logo />
+              <div className="header-name">Face Pay</div>
+          </div>   
           <div className='login-page__fields'>
             <TextField label="E-mail" 
                     message="Ingrese su usuario"
@@ -32,7 +38,26 @@ class LoginPage extends React.Component {
             <Button className="login-page__button--primary" size="large" onClick={this.handleLogin}>Ingresar</Button>
             <Button disabled modifier="transparent">Crear cuenta</Button>
           </div>
+          <KrakenLogo invert/>
         </Card>
+
+        <div className="intro-container">
+          <div className="intro-column">
+            <img src= {require('../../assets/intro.gif')} alt="intro" />
+            <div className="quote">
+              “Los datos biométricos ofrecen gran protección contra el fraude financiero y distintos tipos de robos ya que son mucho más seguros que una tipica contraseña o PIN.”
+            </div>
+            <div className="referer">
+              Dr. Thirimachos Bourlai - Fundador & Director
+            </div>
+
+            <div className="mp-container">
+              <div className="powered-mp">Powered by</div>
+              <LogoMP />
+            </div>
+            
+          </div>  
+        </div>
       </div>
     )
   };
