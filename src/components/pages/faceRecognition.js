@@ -74,14 +74,14 @@ export default class FaceRecognition extends React.Component {
     });
     const imageBase64 = imageCanvas.toDataURL("image/jpeg");
     const parsedImage = parseBase64Image(imageBase64);
+    this.setState({
+      isPaying: true
+    });
     if (this.state.register) {
       this.registerFace(parsedImage);
     } else {
       this.requestPayment(parsedImage);
     }
-    this.setState({
-      isPaying: true
-    });
   }
 
   registerFace(face) {
