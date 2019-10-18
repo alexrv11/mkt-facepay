@@ -1,6 +1,7 @@
 import React from "react";
 import * as faceapi from "face-api.js";
 import { parseBase64Image, payment } from "../../services/faceIntegration";
+import { registerPayer } from "../services/login.service";
 
 import "../styles/faceRecognition.scss";
 import Loader from "react-loader-spinner";
@@ -11,13 +12,14 @@ let video;
 export default class FaceRecognition extends React.Component {
   constructor(props) {
     super(props);
-    const { amount, desc } = queryString.parse(props.location.search);
+    const { amount, desc, register } = queryString.parse(props.location.search);
     this.state = {
       faceRecognized: false,
       isPaying: false,
       paymentOK: null,
       amount,
       desc,
+      register
     };
   }
 
@@ -72,10 +74,25 @@ export default class FaceRecognition extends React.Component {
     });
     const imageBase64 = imageCanvas.toDataURL("image/jpeg");
     const parsedImage = parseBase64Image(imageBase64);
-    this.requestPayment(parsedImage);
+    if (this.state.register) {
+      this.registerFace(parsedImage);
+    } else {
+      this.requestPayment(parsedImage);
+    }
     this.setState({
       isPaying: true
     });
+  }
+
+  registerFace(face) {
+    registerPayer(face)
+      .then(response => {
+        console.log(response.data);
+        window.location.href = response.data;
+      })
+      .catch(error => {
+        console.log("error", error);
+      });
   }
 
   requestPayment(face) {
