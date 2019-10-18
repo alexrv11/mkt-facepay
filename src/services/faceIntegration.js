@@ -11,6 +11,7 @@ export const parseBase64Image = function(base64Image) {
 };
 
 export const authFace = function(base64Image) {
+
   return axios.post("https://thawing-wildwood-80127.herokuapp.com/validate", {
     face: base64Image
   });

@@ -4,7 +4,7 @@ import { withRouter } from 'react-router-dom';
 import Card from '@andes/card';
 import Button from '@andes/button';
 import TextField from '@andes/textfield';
-import { validateUser, getUser } from '../services/login.service';
+import { validateUser, getUser, registerPayer } from '../services/login.service';
 import { USER_TYPE } from '../constants/index';
 import { saveToLocalStorage, getFromLocalStorage, clearLocalStorage } from '../services/storage.service';
 import Logo from '../views/logo'
@@ -64,6 +64,18 @@ class LoginPage extends React.Component {
       });
   }
 
+  handleRegisterPayer = () => {
+    registerPayer()
+      .then((response) => {
+        console.log(response.data);
+        window.location.href = response.data;
+        
+      })
+      .catch((error) => {
+        console.log('error', error);  
+      });
+  }
+
   render() {
     return (
       <div className={`login-page ${this.state.outAnimation ? 'outAnimation' : ''}`}>     
@@ -98,8 +110,8 @@ class LoginPage extends React.Component {
                   Ingresar
             </Button>
             <Button
-                  disabled
-                  modifier="transparent">
+                  modifier="transparent"
+                  onClick={this.handleRegisterPayer}>
                   Crear cuenta
             </Button>
           </div>

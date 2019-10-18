@@ -1,6 +1,7 @@
 import React from "react";
 import * as faceapi from "face-api.js";
 import { parseBase64Image, payment } from "../../services/faceIntegration";
+
 import "../styles/faceRecognition.scss";
 import Loader from "react-loader-spinner";
 const queryString = require("query-string");

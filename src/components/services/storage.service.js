@@ -4,6 +4,7 @@ export const saveToLocalStorage = (itemName, itemValue) => {
 };
 
 export const getFromLocalStorage = (itemName) => {
+
   const item = localStorage.getItem(itemName);
   try {
     return item ? JSON.parse(item) : undefined;
